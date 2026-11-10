@@ -1,0 +1,9 @@
+# Exact runtime dependency closure verified on Python 3.11, Linux x86-64.
+ducc0==0.41.0
+jax==0.6.2
+jaxlib==0.6.2
+ml-dtypes==0.6.0
+numpy==2.4.6
+opt-einsum==3.4.0
+scipy==1.17.1
+trimesh==5.1.0

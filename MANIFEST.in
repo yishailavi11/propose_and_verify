@@ -1,0 +1,6 @@
+include README.md LICENSE THIRD_PARTY.md
+recursive-include scripts *.py *.sh
+recursive-include requirements *.txt
+recursive-include tests *.py
+recursive-include src_simple *.py *.md *.txt
+recursive-include examples *.obj

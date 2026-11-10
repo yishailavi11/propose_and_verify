@@ -1,0 +1,12 @@
+.venv*/
+.cache/
+.fast_symmetry_cache/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+build/
+dist/
+outputs/
+external/
+*.so

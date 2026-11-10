@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "symmetry-detection-production"
+version = "1.0.0"
+description = "FAST angular 3D reflection symmetry detection"
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.11,<3.12"
+dependencies = ["numpy==2.4.6", "scipy==1.17.1", "jax==0.6.2", "jaxlib==0.6.2", "trimesh==5.1.0", "ducc0==0.41.0"]
+
+[project.optional-dependencies]
+gpu = ["jax[cuda12]==0.6.2", "cupy-cuda12x==14.2.0", "cufinufft==2.5.1"]
+dev = ["pytest>=8,<10", "ruff==0.12.11", "build>=1.2"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+fast_symmetry = ["voting/native/*.cpp", "voting/native/*.hpp", "verification/cuda/native/*.cu", "verification/cuda/native/*.cuh"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 88
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]
+ignore = ["E501"]

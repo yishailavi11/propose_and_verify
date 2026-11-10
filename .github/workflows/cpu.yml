@@ -1,0 +1,19 @@
+name: CPU tests
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      JAX_PLATFORMS: cpu
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install '.[dev]'
+      - run: ruff check src src_simple scripts tests
+      - run: pytest -q
+      - run: python -m pip install -r src_simple/requirements.txt
+      - run: python -m pytest -q src_simple/tests
