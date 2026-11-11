@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <meta content="Propose &amp; Verify: Fast Reflection Symmetry Detection via Harmonic Fields. A training-free method for recovering multiple reflection planes in 3D shapes, by Yishai Lavi and Shai Avidan." name="description"/>
+  <meta content="#ffffff" name="theme-color"/>
+  <meta content="Propose &amp; Verify" property="og:title"/>
+  <meta content="Fast Reflection Symmetry Detection via Harmonic Fields — Yishai Lavi and Shai Avidan." property="og:description"/>
+  <meta content="website" property="og:type"/>
+  <title>
+   Propose &amp; Verify | Yishai Lavi &amp; Shai Avidan
+  </title>
+  <link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/>
+  <link href="style.css" rel="stylesheet"/>
+  <script defer="" src="script.js">
+  </script>
+ </head>
+ <body>
+  <a class="skip-link" href="#main">
+   Skip to content
+  </a>
+  <svg aria-hidden="true" class="icon-definitions" xmlns="http://www.w3.org/2000/svg">
+   <symbol id="icon-paper" viewbox="0 0 24 24">
+    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z">
+    </path>
+    <path d="M14 2v6h6M8 13h8M8 17h6">
+    </path>
+   </symbol>
+   <symbol id="icon-code" viewbox="0 0 24 24">
+    <path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-14-2 18">
+    </path>
+   </symbol>
+   <symbol id="icon-arrow" viewbox="0 0 24 24">
+    <path d="M7 17 17 7M7 7h10v10">
+    </path>
+   </symbol>
+   <symbol id="icon-copy" viewbox="0 0 24 24">
+    <rect height="13" rx="2" width="12" x="8" y="8">
+    </rect>
+    <path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3">
+    </path>
+   </symbol>
+  </svg>
+  <main id="main">
+   <header class="hero container">
+    <h1>
+     Propose
+     <span class="ampersand">
+      &amp;
+     </span>
+     Verify
+     <span class="subtitle">
+      Fast Reflection Symmetry Detection
+      <br class="desktop-break"/>
+      via Harmonic Fields
+     </span>
+    </h1>
+    <div class="authors">
+     <a href="https://scholar.google.com/citations?user=FDV9vGYAAAAJ&amp;hl=iw" rel="noopener" target="_blank">
+      Yishai Lavi
+     </a>
+     <a href="https://scholar.google.com/citations?user=hpItE1QAAAAJ&amp;hl=en" rel="noopener" target="_blank">
+      Shai Avidan
+     </a>
+    </div>
+    <p class="affiliation">
+     Tel Aviv University
+    </p>
+    <div class="resource-links">
+     <button aria-disabled="true" class="button button-dark" disabled="" type="button">
+      <svg aria-hidden="true">
+       <use href="#icon-paper">
+       </use>
+      </svg>
+      Paper
+      <span class="button-detail">
+       PDF
+      </span>
+     </button>
+     <a class="button button-outline" href="https://github.com/yishailavi11/propose_and_verify" rel="noopener" target="_blank">
+      <svg aria-hidden="true">
+       <use href="#icon-code">
+       </use>
+      </svg>
+      Code
+     </a>
+    </div>
+    <p class="hero-summary">
+     Instant recovery of multiple reflection planes in 3D shapes
+    </p>
+   </header>
+   <figure class="teaser container">
+    <div class="teaser-image">
+     <a aria-label="Open the method overview at full resolution" href="assets/method.webp" rel="noopener" target="_blank">
+      <img alt="FAST pipeline: surface-point pairs induce planes, weighted votes accumulate over orientations, harmonic filtering reveals field peaks, and geometric verification recovers the reflection planes." fetchpriority="high" height="369" src="assets/method.webp" width="1600"/>
+     </a>
+    </div>
+   </figure>
+   <div aria-label="Selected results reported in the paper" class="highlights container" id="results">
+    <div>
+     <span class="highlight-value">
+      0.904
+     </span>
+     <span class="highlight-label">
+      Mean multi-plane F1
+     </span>
+    </div>
+    <div>
+     <span class="highlight-value">
+      3.64
+      <span class="highlight-unit">
+       ms
+      </span>
+     </span>
+     <span class="highlight-label">
+      Mean GPU runtime
+     </span>
+    </div>
+    <div>
+     <span class="highlight-value">
+      11.17
+      <span class="highlight-unit">
+       ms
+      </span>
+     </span>
+     <span class="highlight-label">
+      Mean CPU runtime
+     </span>
+    </div>
+    <div>
+     <span class="highlight-value">
+      94.9
+      <span class="highlight-unit">
+       %
+      </span>
+     </span>
+     <span class="highlight-label">
+      Single-plane success
+     </span>
+    </div>
+   </div>
+   <p class="highlights-note container">
+    F1 and runtimes are averaged over two datasets; runtimes average the dataset medians. GPU: RTX A5000. CPU: Intel Core i7-13700K. Single-plane success is measured on 611 clean shapes.
+   </p>
+   <section aria-labelledby="abstract-title" class="section abstract-section narrow" id="abstract">
+    <h2 id="abstract-title">
+     Abstract
+    </h2>
+    <p>
+     Detecting multiple reflection symmetries in 3D shapes requires aggregating geometric evidence over a large space of candidate planes, making traditional voting approaches computationally expensive. We introduce the Fourier Accelerated Symmetry Transform (FAST), a training-free framework that combines geometric pair voting with efficient spectral computation. Exploiting the fact that global reflection planes pass through the shape centroid, we reduce the search to plane orientations, while geometric consistency filtering and independent witnesses suppress unreliable pair hypotheses. Our key insight is to represent these votes as a signal over plane orientations and efficiently compute a continuous, smoothed symmetry field in the spherical-harmonic domain. Specifically, we exploit the Funk-Hecke theorem, the spherical counterpart of the Fourier convolution theorem for rotationally symmetric kernels, to transform Gaussian smoothing into multiplication of harmonic coefficients. This enables efficient field evaluation, from which symmetry candidates are extracted, refined, and geometrically verified. Across two benchmarks, including a new benchmark of highly symmetric shapes, FAST achieves the highest clean multi-plane detection F<sub>1</sub> scores among evaluated methods (0.861 and 0.947), with GPU inference below 4 ms per shape: over 100× faster than the next-fastest evaluated multi-plane GPU baseline. FAST also demonstrates strong robustness to geometric noise and competitive single-plane detection, achieving 94.9% success on clean single-plane shapes.
+    </p>
+   </section>
+   <section aria-labelledby="method-title" class="section container method-section" id="method">
+    <div class="section-heading">
+     <div>
+      <h2 id="method-title">
+       Method
+      </h2>
+     </div>
+    </div>
+    <ol class="method-steps">
+     <li>
+      <span class="step-number">
+       01
+      </span>
+      <h3>
+       Screen &amp; weight
+      </h3>
+      <p>
+       Surface-point pairs induce reflection planes. A centroid gate and independent witnesses weight geometrically consistent hypotheses.
+      </p>
+     </li>
+     <li>
+      <span class="step-number">
+       02
+      </span>
+      <h3>
+       Vote over orientations
+      </h3>
+      <p>
+       Accumulate angular evidence on the projective sphere, where opposite normals describe the same plane.
+      </p>
+     </li>
+     <li>
+      <span class="step-number">
+       03
+      </span>
+      <h3>
+       Filter harmonically
+      </h3>
+      <p>
+       Project the votes into spherical harmonics. Apply Gaussian smoothing through degree-wise multiplication.
+      </p>
+     </li>
+     <li>
+      <span class="step-number">
+       04
+      </span>
+      <h3>
+       Refine &amp; verify
+      </h3>
+      <p>
+       Refine local maxima continuously, then test reflected points against the input surface to retain reliable planes.
+      </p>
+     </li>
+    </ol>
+   </section>
+   <section aria-labelledby="qualitative-title" class="section qualitative-section">
+    <div class="container">
+     <div class="section-heading">
+      <div>
+       <h2 id="qualitative-title">
+        Qualitative Results
+       </h2>
+      </div>
+      <p class="section-description">
+       Rotate the shapes or their harmonic fields, and select a noise level to compare results.
+      </p>
+     </div>
+     <div class="gallery-toolbar">
+      <div aria-label="Gaussian noise level" class="noise-control" role="group">
+       <button aria-pressed="true" class="selected" data-noise="0" type="button">
+        Clean
+       </button>
+       <button aria-pressed="false" data-noise="1" type="button">
+        1% noise
+       </button>
+       <button aria-pressed="false" data-noise="3" type="button">
+        3% noise
+       </button>
+       <button aria-pressed="false" data-noise="5" type="button">
+        5% noise
+       </button>
+      </div>
+      <p aria-live="polite" class="gallery-status" id="noise-status">
+       Loading interactive views…
+      </p>
+     </div>
+     <iframe allow="fullscreen" allowfullscreen="" class="qualitative-viewer" id="qualitative-viewer" loading="lazy" src="qualitative.html?embed=1" title="Rotate the paper examples: shapes, reflection planes, and harmonic fields">
+     </iframe>
+     <noscript>
+      <p class="noscript-note">
+       Enable JavaScript for the interactive 3D views, or
+       <a href="assets/qualitative.webp">
+        view the paper figure
+       </a>
+       .
+      </p>
+     </noscript>
+    </div>
+   </section>
+   <section aria-labelledby="citation-title" class="section container citation-section">
+    <div class="citation-heading">
+     <h2 id="citation-title">
+      Citation
+     </h2>
+     <button aria-label="Copy BibTeX citation" class="copy-citation" data-copy="citation" type="button">
+      <svg aria-hidden="true">
+       <use href="#icon-copy">
+       </use>
+      </svg>
+      <span>
+       Copy BibTeX
+      </span>
+     </button>
+    </div>
+    <pre><code id="citation">@misc{lavi2026proposeverify,
+  title  = {Propose \&amp; Verify: Fast Reflection Symmetry
+            Detection via Harmonic Fields},
+  author = {Yishai Lavi and Shai Avidan},
+  year   = {2026},
+  note   = {Preprint}
+}</code></pre>
+   </section>
+  </main>
+  <span class="visually-hidden" id="copy-status" role="status">
+  </span>
+ </body>
+</html>
