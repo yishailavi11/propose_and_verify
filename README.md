@@ -1,5 +1,7 @@
 # Propose & Verify: Fast Reflection Symmetry Detection via Harmonic Fields
 
+[Paper](https://arxiv.org/abs/2611.22856) · [Project page](https://yishailavi11.github.io/propose_and_verify/)
+
 FAST detects reflection symmetry planes in 3D shapes by proposing planes from a smoothed harmonic field and verifying them geometrically. This repository provides the paper's main method on **CPU and NVIDIA GPU**, together with a simpler CPU implementation for reading and experimentation. No training or pretrained weights are required.
 
 ## Installation
